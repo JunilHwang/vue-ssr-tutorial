@@ -8,14 +8,15 @@ const renderer = require('vue-server-renderer').createRenderer({
 
 /* GET users listing. */
 router.get('*', async (req, res) => {
-  const html = await renderer.renderToString(
-    new Vue({
-      data: {
-        url: req.originalUrl
-      },
-      template: `<div>The visited URL is: {{ url }}</div>`
-    })
-  )
+  const app = new Vue({
+    data: {
+      url: req.originalUrl
+    },
+    template: `<div>The visited URL is: {{ url }}</div>`
+  })
+  const html = await renderer.renderToString(app, {
+    title: 'this is ssr title'
+  })
   res.end(html)
 });
 
