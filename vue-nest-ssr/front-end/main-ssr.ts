@@ -5,21 +5,16 @@ import { createStore } from './store'
 
 Vue.config.productionTip = false
 
-export default (context: any) => {
+export default () => {
   return new Promise(async (resolve, reject) => {
 
     const router = createRouter()
     const store = createStore()
     const app = new Vue({
-      data: {
-        url: context.url
-      },
       router,
       store,
       render: h => h(App)
     })
-
-    await router.push(context.url)
 
     router.onReady(() => {
       resolve(app)

@@ -2,6 +2,7 @@ const path = require('path')
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
 
 module.exports = {
+  outputDir: './static',
   chainWebpack: config => {
     const isSSR = process.env.NODE_ENV === 'ssrProduction'
     config.resolve.alias.set('@', path.join(__dirname, './front-end'))
