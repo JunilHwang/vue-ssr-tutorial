@@ -8,18 +8,17 @@ module.exports = {
   productionSourceMap: false,
   outputDir: './resources',
   assetsDir: 'static',
-  // pages: {
-  //   index: {
-  //     entry: `front-end/main${isDev ? '' : '-ssr'}.ts`,
-  //     template: isDev ? 'resources/stub/index.html' : 'resources/templates/index.hbs',
-  //     filename: 'resources/templates/dist/index.hbs', // 빌드 후 템플릿 파일
-  //     path: ['/*'] // dev 모드 프록시에 적용할 path
-  //   },
-  // },
+  indexPath: 'dist/index.hbs',
+  pages: {
+    index: {
+      entry: `front-end/main${isSSR ? '-ssr' : ''}.ts`,
+      template: `resources/${isDev ? 'stub' : 'template' }/index.html`,
+    },
+  },
 
   chainWebpack: config => {
     config.resolve.alias.set('@', path.join(__dirname, './front-end'))
-    config.entry('app').clear().add(`./front-end/main${ isSSR ? '-ssr' : '' }.ts`).end()
+    // config.entry('app').clear().add(`./front-end/main${ isSSR ? '-ssr' : '' }.ts`).end()
 
     if (isSSR) {
       config.target('node');
