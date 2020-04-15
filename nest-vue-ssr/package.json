@@ -28,7 +28,6 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
     "rxjs": "^6.5.4",
-
     "core-js": "^3.6.4",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
@@ -56,7 +55,6 @@
     "ts-loader": "^6.2.1",
     "ts-node": "^8.6.0",
     "tsconfig-paths": "^3.9.0",
-
     "@vue/cli-plugin-babel": "^4.3.0",
     "@vue/cli-plugin-router": "^4.3.0",
     "@vue/cli-plugin-typescript": "^4.3.0",
@@ -68,7 +66,11 @@
     "vue-template-compiler": "^2.6.11"
   },
   "jest": {
-    "moduleFileExtensions": [ "js", "json", "ts" ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
     "rootDir": "back-end",
     "testRegex": ".spec.ts$",
     "transform": {
