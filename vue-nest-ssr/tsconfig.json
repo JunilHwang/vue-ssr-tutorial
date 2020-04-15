@@ -25,5 +25,5 @@
     },
     "lib": [ "esnext", "dom", "dom.iterable", "scripthost" ]
   },
-  "exclude": ["node_modules", "dist", "**/*spec.ts"]
+  "exclude": ["node_modules", "dist", "**/*spec.ts", "ssr-config"]
 }

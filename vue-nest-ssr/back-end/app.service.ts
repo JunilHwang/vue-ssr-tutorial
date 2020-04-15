@@ -1,8 +1,12 @@
 import { Injectable } from '@nestjs/common';
+import { createBundleRenderer } from 'vue-server-renderer'
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+  async getSSRTemplate(): Promise<string> {
+    const renderer = createBundleRenderer('', {
+      runInNewContext: false, // recommended
+    })
+    return await renderer.renderToString()
   }
 }
