@@ -18,6 +18,8 @@
     "vue-server-renderer": "^2.6.11"
   },
   "devDependencies": {
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.3",
+    "clean-css": ">=4.1.11",
+    "acorn": ">=5.7.4"
   }
 }
