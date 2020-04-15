@@ -8,11 +8,11 @@ module.exports = {
   productionSourceMap: false,
   outputDir: './resources',
   assetsDir: 'static',
-  indexPath: 'dist/index.hbs',
+  indexPath: 'templates/dist/index.hbs',
   pages: {
     index: {
       entry: `front-end/main${isSSR ? '-ssr' : ''}.ts`,
-      template: `resources/${isDev ? 'stub' : 'template' }/index.html`,
+      template: `resources/${isDev ? 'stub' : 'templates' }/index.html`,
     },
   },
 
