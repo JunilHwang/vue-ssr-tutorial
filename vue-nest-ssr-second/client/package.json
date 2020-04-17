@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "serve": "cross-env NODE_ENV=development vue-cli-service serve",
+    "build": "vue-cli-service build --no-clean",
+    "build:ssr": "cross-env NODE_ENV=ssr vue-cli-service build --no-clean"
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -24,7 +25,8 @@
     "sass-loader": "^8.0.2",
     "typescript": "~3.8.3",
     "vue-server-renderer": "^2.6.11",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "cross-env": "^7.0.2"
   },
   "browserslist": [
     "> 1%",
