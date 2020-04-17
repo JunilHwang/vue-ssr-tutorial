@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "workspaces": [
+    "vue-express",
+    "vue-origin",
+    "vue-nest-ssr",
+    "vue-nest-ssr-second/client",
+    "vue-nest-ssr-second/server"
+  ]
+}
