@@ -16,6 +16,11 @@ export const createRouter = () => new VueRouter({
       path: '/about',
       name: 'About',
       component: () => import('@/views/About.vue')
+    },
+    {
+      path: '/user',
+      name: 'User',
+      component: () => import('@/views/User.vue')
     }
   ]
 })

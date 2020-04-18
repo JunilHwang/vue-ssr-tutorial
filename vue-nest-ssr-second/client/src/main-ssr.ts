@@ -4,10 +4,14 @@ import { createRouter, createStore } from './middleware'
 
 Vue.config.productionTip = false
 
-export default (context: { [k: string]: string }) => new Promise(async (resolve, reject) => {
+export default (context: any) => new Promise(async (resolve, reject) => {
   const router = createRouter()
-  const store = createStore(context)
+  const store = createStore()
+
+  store.commit('userStore/init', context.user)
+
   await router.push(context.url)
+
   router.onReady(
 () => {
       const render = (h: Function) => h(App)
