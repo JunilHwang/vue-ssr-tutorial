@@ -12,12 +12,12 @@ export default (context: any) => new Promise(async (resolve, reject) => {
 
   await router.push(context.url)
 
-  router.onReady(
-() => {
-      const render = (h: Function) => h(App)
-      const app = new Vue({ router, store, render }).$mount('#app')
-      resolve(app)
-    },
-    reject
-  )
+  router.onReady(() => {
+    const render = (h: Function) => h(App)
+    const app = new Vue({ router, store, render }).$mount('#app')
+    context.rendered = () => {
+      context.state = store.state
+    }
+    resolve(app)
+  }, reject)
 })
