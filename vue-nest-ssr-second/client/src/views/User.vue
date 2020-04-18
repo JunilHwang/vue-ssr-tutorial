@@ -1,6 +1,6 @@
 <template>
   <div>
-
+    {{ this.userInfo }}
   </div>
 </template>
 
@@ -14,7 +14,6 @@ const userStore = namespace('userStore')
 export default class User extends Vue {
 
   @userStore.State private userInfo!: any
-
 
   serverPrefetch () {
     console.log("===============serverPrefetch start===============")

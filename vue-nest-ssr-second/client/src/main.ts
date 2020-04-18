@@ -5,7 +5,7 @@ import { createRouter, createStore } from './middleware'
 Vue.config.productionTip = false
 
 const router = createRouter()
-const store = createStore({  })
+const store = createStore()
 
 new Vue({
   router,

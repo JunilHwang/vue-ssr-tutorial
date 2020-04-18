@@ -10,13 +10,22 @@ export class AppController {
     private readonly userService: UserService
   ) {}
 
-  @Get('*')
+  @Get(['/', '/about'])
   @Render('index')
-  async getHello (@Req() req: Request) {
+  async getHome (@Req() req: Request) {
     return {
-      content: await this.appService.getSSR({ url: req.url }),
-      title: 'SSR Success',
-      user: this.userService.getUser()
+      content: '<div id="app"></div>',
+      title: 'SSR Success'
+    }
+  }
+
+  @Get('/user')
+  @Render('index')
+  async getUser (@Req() req: Request) {
+    const user = this.userService.getUser()
+    return {
+      content: await this.appService.getSSR({ url: req.url, user }),
+      title: `${user.name} | UserInfo`,
     }
   }
 }
