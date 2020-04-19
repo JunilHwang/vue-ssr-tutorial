@@ -14,8 +14,7 @@ export class AppController {
   @Render('index')
   async getHome (@Req() req: Request) {
     return {
-      isCSR: '<div id="app"></div>',
-      title: 'SSR Success'
+      title: 'Vue + Nest SSR Tutorial'
     }
   }
 

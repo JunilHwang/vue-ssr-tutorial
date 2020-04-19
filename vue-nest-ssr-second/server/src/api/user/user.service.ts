@@ -3,6 +3,11 @@ import {Injectable} from "@nestjs/common";
 @Injectable()
 export class UserService {
   getUser () {
-    return { idx: 1, name: 'junil', email: 'tjsdlf4261@naver.com' }
+    return {
+      idx: 1,
+      name: 'junil',
+      email: 'tjsdlf4261@naver.com',
+      profile: `<script>const a = 10;</script>`
+    }
   }
 }
