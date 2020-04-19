@@ -14,19 +14,27 @@ export class AppController {
   @Render('index')
   async getHome (@Req() req: Request) {
     return {
-      title: 'Vue + Nest SSR Tutorial'
+      title: 'Vue + Nest SSR Tutorial',
+      content: '<div id="app"></div>',
+      initState: null
     }
   }
 
   @Get('/user')
+  @Render('index')
   async getUser (@Req() req: Request, @Res() res: Response) {
     const user = this.userService.getUser()
-    const context = {
-      url: req.url,
-      user,
-      title: `${user.name} | 사용자 정보`,
-      isCSR: ''
-    }
-    res.end(await this.appService.getSSR(context))
+    const context = { url: req.url, user }
+    const title = `${user.name} | 사용자 정보`
+    const content = await this.appService.getSSR(context)
+    const serialize = require('serialize-javascript')
+    const initState = `
+      <script>
+        window.initState = {
+          user: ${serialize(user)}
+        }
+      </script>
+    `
+    return { title, content, initState }
   }
 }

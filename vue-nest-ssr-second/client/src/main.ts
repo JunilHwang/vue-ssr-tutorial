@@ -2,8 +2,13 @@ import { createApp } from './app'
 
 const { app, store } = createApp()
 
-if ((window as any).__INITIAL_STATE__) {
-  store.replaceState((window as any).__INITIAL_STATE__)
+const { initState } = window as any
+
+if (initState) {
+  const { user } = initState
+  if (user) {
+    store.commit('userStore/init', user)
+  }
 }
 
 app.$mount('#app', true)
