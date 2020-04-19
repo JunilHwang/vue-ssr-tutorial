@@ -4,7 +4,7 @@ import { join } from 'path'
 import { readFileSync } from 'fs'
 
 const bundlePath = join(__dirname, '../../resources/vue-ssr-server-bundle.json')
-const templatePath = join(__dirname, '../../resources/templates/dist/index.hbs')
+const templatePath = join(__dirname, '../../resources/templates/dist/ssr.html')
 const template = readFileSync(templatePath, 'utf-8')
 
 console.log(template)
