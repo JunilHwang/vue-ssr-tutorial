@@ -7,12 +7,10 @@ Vue.config.productionTip = false
 const router = createRouter()
 const store = createStore()
 
-const w: any = window
+console.log((window as any).__INITIAL_STATE__)
 
-console.log(w.__INITIAL_STATE__)
-
-if (w.__INITIAL_STATE__) {
-  store.replaceState(w.__INITIAL_STATE__)
+if ((window as any).__INITIAL_STATE__) {
+  store.replaceState((window as any).__INITIAL_STATE__)
 }
 
 new Vue({

@@ -1,23 +1,19 @@
-import Vue from 'vue'
-import App from './App.vue'
-import { createRouter, createStore } from './middleware'
+import { createApp } from './app'
 
-Vue.config.productionTip = false
+export default (context: any) => {
+  return new Promise(async (resolve, reject) => {
+    const { app, router, store } = createApp()
 
-export default (context: any) => new Promise(async (resolve, reject) => {
-  const router = createRouter()
-  const store = createStore()
+    store.commit('userStore/init', context.user)
 
-  store.commit('userStore/init', context.user)
+    await router.push(context.url)
 
-  await router.push(context.url)
+    router.onReady(() => {
+      context.rendered = () => {
+        context.state = store.state
+      }
 
-  router.onReady(() => {
-    const render = (h: Function) => h(App)
-    const app = new Vue({ router, store, render }).$mount('#app')
-    context.rendered = () => {
-      context.state = store.state
-    }
-    resolve(app)
-  }, reject)
-})
+      resolve(app)
+    }, reject)
+  })
+}
